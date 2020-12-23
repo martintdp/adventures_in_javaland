@@ -3,6 +3,7 @@ package edu.aij.MavenToBazel.HelloWorld;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import edu.aij.MavenToBazel.HelloWorld.resources.HelloWorldResource;
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
 
@@ -23,7 +24,11 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     @Override
     public void run(final HelloWorldConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        final HelloWorldResource resource = new HelloWorldResource(
+                configuration.getTemplate(),
+                configuration.getDefaultName()
+        );
+        environment.jersey().register(resource);
     }
 
 }

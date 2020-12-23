@@ -2,3 +2,4 @@ logging:
   level: INFO
   loggers:
     aij.maven-to-bazel: DEBUG
+template: Hello, %s!
